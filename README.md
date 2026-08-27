@@ -1,36 +1,46 @@
+> [!NOTE]
+> ## This is a maintained fork
+>
+> **`phenixrizen/zen-ios` is the Swift package for [`phenixrizen/zen`](https://github.com/phenixrizen/zen), a maintained fork of `gorules/zen`, maintained by Phenix Rizen (Nathan Rockhold).**
+>
+> The bundled XCFramework is built from that fork, so it carries features upstream does not have:
+> a `databaseNode` for reference-data lookups, decision-level `$params`, `TZ`-aware date
+> resolution, and a fix for silent truncation of fractional numbers.
+>
+> Add it by URL:
+>
+> ```swift
+> .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.0.0")
+> ```
+>
+> Not affiliated with or endorsed by GoRules. MIT licensed, same as upstream, with the original
+> copyright retained in [LICENSE](LICENSE).
+
 # Swift Rules Engine for iOS
 
 **Business logic humans can read and machines can run.** One copy of your rules: the owner reads it, every system runs it.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<img width="1280" alt="GoRules ZEN Engine" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/hero.png">
-
-ZEN Engine is a cross-platform, open-source [Business Rules Engine (BRE)](https://gorules.io) written in **Rust**, packaged here as a **Swift** package with a precompiled XCFramework for **iOS**. Decisions evaluate in microseconds, on-device and offline-capable, and are stored as portable JSON that runs identically on every platform: the same rules power Node.js, Python, Go, Java, Kotlin and .NET backends.
-
-Try it in the free [Online Editor](https://editor.gorules.io) with a built-in simulator, or embed the open-source React [JDM Editor](https://github.com/gorules/jdm-editor) in your own product. Learn more about the [Swift rules engine](https://gorules.io/open-source/swift-rules-engine) on the GoRules website.
+ZEN Engine is a cross-platform, open-source Business Rules Engine (BRE) written in **Rust**, packaged here as a **Swift** package with a precompiled XCFramework for **iOS**. Decisions evaluate in microseconds, on-device and offline-capable, and are stored as portable JSON that runs identically on every platform: the same rules power Node.js, Python, Go, Java, Kotlin and .NET backends.
 
 ## Rules that read like sentences
 
 Conditions are written the way the business says them, in the ZEN Expression Language. The developer view is one toggle away, and the two can never drift apart: there is only one source of truth, and this engine runs it.
 
-<img width="1280" alt="Readable rules" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/tables.png">
-
 ## Rules as graphs, or as documents
 
 Model a decision on a visual canvas of decision tables, switches, expressions, functions and reusable sub-decisions. Or write it as a policy document with prose, typed data models and tables. Both compile to the same engine and return the same answers.
 
-<img width="1280" alt="Graphs and documents" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/graphs-docs.png">
-
-To go deeper, see the [iOS SDK documentation](https://docs.gorules.io/developers/sdks/ios), the [decision graph guide](https://docs.gorules.io/learn/authoring/decision-graphs) and the [ZEN Expression Language](https://docs.gorules.io/learn/zen-language/syntax) reference.
+A JDM document is either a **graph** (decision tables, switches, expressions, functions and reusable sub-decisions) or a **policy** (prose, typed data models and tables). Both compile to the same engine and return the same answers.
 
 ## Installation
 
-Add the package in Xcode via **File → Add Package Dependencies...** with the repository URL `https://github.com/gorules/zen-ios`, or in `Package.swift`:
+Add the package in Xcode via **File → Add Package Dependencies...** with the repository URL `https://github.com/phenixrizen/zen-ios`, or in `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/gorules/zen-ios", from: "2.0.0")
+    .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.0.0")
 ]
 ```
 
@@ -92,38 +102,17 @@ func createEngine() throws -> ZenEngine {
 }
 ```
 
-Full guides, including filesystem and zip loaders, tracing and expression evaluation, are in the [iOS SDK documentation](https://docs.gorules.io/developers/sdks/ios).
+
 
 ## Other platforms
 
-* **Node.js** - [GitHub](https://github.com/gorules/zen/tree/master/bindings/nodejs) | [Documentation](https://docs.gorules.io/developers/sdks/nodejs) | [npm](https://www.npmjs.com/package/@gorules/zen-engine)
-* **Python** - [GitHub](https://github.com/gorules/zen/tree/master/bindings/python) | [Documentation](https://docs.gorules.io/developers/sdks/python) | [PyPI](https://pypi.org/project/zen-engine/)
-* **Go** - [GitHub](https://github.com/gorules/zen-go) | [Documentation](https://docs.gorules.io/developers/sdks/go)
-* **Java / Kotlin / Android** - [GitHub](https://github.com/gorules/zen/tree/master/bindings/uniffi) | [Documentation](https://docs.gorules.io/developers/sdks/java) | [Maven Central](https://central.sonatype.com/artifact/io.gorules/zen-engine)
-* **.NET** - [GitHub](https://github.com/gorules/zen/tree/master/bindings/uniffi) | [Documentation](https://docs.gorules.io/developers/sdks/csharp) | [NuGet](https://www.nuget.org/packages/GoRules.ZenEngine)
-* **Rust (Core)** - [GitHub](https://github.com/gorules/zen) | [Documentation](https://docs.gorules.io/developers/sdks/rust) | [crates.io](https://crates.io/crates/zen-engine)
+* **Node.js** — [npm](https://www.npmjs.com/package/@phenixrizen/zen-engine)
+* **Python** — [PyPI](https://pypi.org/project/phenixrizen-zen-engine/)
+* **Go** — [phenixrizen/zen-go](https://github.com/phenixrizen/zen-go)
+* **Java / Kotlin / Android** — [source](https://github.com/phenixrizen/zen/tree/master/bindings/uniffi)
+* **.NET** — [NuGet](https://www.nuget.org/packages/PhenixRizen.ZenEngine)
+* **Rust (core)** — [phenixrizen/zen](https://github.com/phenixrizen/zen) | [crates.io](https://crates.io/crates/phenixrizen-zen-engine)
 
-## The GoRules platform
-
-The engine is open at the core; [GoRules](https://gorules.io) is the platform around it. Managed cloud, self-hosted, or embedded with no network hop. SOC 2 Type II.
-
-### AI that builds rules, and stays reviewable
-
-An AI copilot and MCP server that edits rules, runs tests and explains decisions. It never deploys. Releases stay with your reviewers.
-
-<img width="800" alt="GoRules AI" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/ai.png">
-
-### Promote like a release, run like a binary
-
-A release moves from testing to staging to production untouched. Approvals, instant rollback, and a paper trail for every change.
-
-<img width="800" alt="Governance" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/governance.png">
-
-### Prove it before it ships
-
-Scenario suites run on every change, coverage is measured against decision paths, and every answer comes with a replayable trace.
-
-<img width="800" alt="Testing" src="https://raw.githubusercontent.com/gorules/zen/master/.github/images/tests.png">
 
 ## Requirements
 
@@ -132,7 +121,12 @@ Scenario suites run on every change, coverage is measured against decision paths
 
 ## Contribution
 
-The JDM standard is growing and we need to keep tight control over its development and roadmap, as a number of companies use GoRules ZEN Engine and GoRules BRMS. For this reason we can't accept code contributions at this moment, apart from help with documentation and additional tests.
+**Contributions are welcome here.** This fork exists partly because upstream cannot take them.
+
+Note that this repository is a distribution package, not source: `ZenUniffi.xcframework` and
+`Sources/` are build artifacts produced by the `UniFFI` workflow in
+[`phenixrizen/zen`](https://github.com/phenixrizen/zen) and pushed here. A change to evaluation
+or to the Swift bindings belongs there; only packaging changes belong here.
 
 ## License
 
@@ -140,4 +134,4 @@ The JDM standard is growing and we need to keep tight control over its developme
 
 ## Support
 
-For issues and questions, please visit [github.com/gorules/zen-ios/issues](https://github.com/gorules/zen-ios/issues).
+For issues and questions, please visit [github.com/phenixrizen/zen-ios/issues](https://github.com/phenixrizen/zen-ios/issues).
