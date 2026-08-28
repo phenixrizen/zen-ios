@@ -3,14 +3,19 @@
 >
 > **`phenixrizen/zen-ios` is the Swift package for [`phenixrizen/zen`](https://github.com/phenixrizen/zen), a maintained fork of `gorules/zen`, maintained by Phenix Rizen (Nathan Rockhold).**
 >
-> The bundled XCFramework is built from that fork, so it carries features upstream does not have:
-> a `databaseNode` for reference-data lookups, decision-level `$params`, `TZ`-aware date
-> resolution, and a fix for silent truncation of fractional numbers.
+> The bundled XCFramework is built from that fork, so it carries fixes upstream does not have:
+> decision-level `$params`, `TZ`-aware date resolution, and a fix for silent truncation of
+> fractional numbers — where every non-integer value was rounded down before serialization.
+>
+> The fork's `databaseNode` is present in the engine but **not usable from Swift**: the UniFFI
+> binding links no database handler and exposes no way to register one, so evaluating a
+> `databaseNode` returns "Database handler not provided". It is available in the Rust, Go and
+> Node.js bindings.
 >
 > Add it by URL:
 >
 > ```swift
-> .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.0.0")
+> .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.1.0")
 > ```
 >
 > Not affiliated with or endorsed by GoRules. MIT licensed, same as upstream, with the original
@@ -40,7 +45,7 @@ Add the package in Xcode via **File → Add Package Dependencies...** with the r
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.0.0")
+    .package(url: "https://github.com/phenixrizen/zen-ios", from: "2.1.0")
 ]
 ```
 
